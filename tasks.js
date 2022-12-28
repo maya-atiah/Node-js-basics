@@ -106,7 +106,7 @@ function quit(){
       console.log(element);
     }
     else if (element === "hello") {
-      console.log("- Says hello name! : ");
+      console.log("- Says hello name!: ");
       console.log(element + " name");
     }
     else if (element === "exit") {
