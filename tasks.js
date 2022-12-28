@@ -54,6 +54,17 @@ function onDataReceived(text) {
   else if(text.split(" ")[0].replace("\n","") === "add"){
     add(text.replace("\n","").split(" ").slice(1));
   }
+
+  else if(text==="remove\n"){
+    remove();
+      
+  }
+ else if(text==="remove 1\n"){
+  remove1();
+ }
+ else if(text==="remove 2\n"){
+  remove2();
+ }
   else{
     unknownCommand(text);
   }
@@ -147,6 +158,20 @@ function add(task) {
     console.log("error");
   }
 } 
+
+// remove function
+function remove(task){
+  tasks.pop(task);
+} 
+
+function remove1(task){
+  tasks.shift(task);
+}
+
+function remove2(task){
+  tasks.splice(1,1);
+}
+
 
 // The following line starts the application
 startApp("Maya Atiah")
