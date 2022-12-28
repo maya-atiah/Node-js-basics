@@ -116,24 +116,9 @@ function quit(){
 /**
  * Help function
  */
- function help() {
-  const help = ["hello", "quit", "exit"];
-  help.forEach(element => {
-    if (element === "quit") {
-      console.log("- To quit the app : ");
-      console.log(element);
-    }
-    else if (element === "hello") {
-      console.log("- Says hello name!: ");
-      console.log(element + " name");
-    }
-    else if (element === "exit") {
-      console.log("- To exit the app:");
-      console.log(element);
-    }
-
-  
-  });
+function help() {
+  console.log("Options:\n 1-hello name\t\t says hello name!\n 2-quit\t\t\t to exit\n 3-exit\t\t\t to exit\n 4-list\t\t\t lists all tasks\n 5-add x\t\t adds x to the list\n 6-remove\t\t removes last task in the list\n 7-remove 1\t\t removes list number 1 from the list\n 8-remove 2\t\t removes list number 2 from the list"
+  )
 }
 
 
