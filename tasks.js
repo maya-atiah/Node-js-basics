@@ -55,7 +55,7 @@ function onDataReceived(text) {
     add(text.replace("\n","").split(" ").slice(1));
   }
   else if (text.slice(0, 6) === "remove")
-  remove(text.replace(/\t/g, "").slice(6).trim());
+  remove(text.replace(/ /g, "").slice(6).trim());
 
 //   else if(text==="remove\n"){
 //     remove();
@@ -67,7 +67,10 @@ function onDataReceived(text) {
 //  else if(text==="remove 2\n"){
 //   remove2();
 //  }
-  else{
+  else if (text.slice(0, 4) === "edit")  {
+    edit(text.replace(/ /g, "").slice(4).trim());
+  }
+  else {
     unknownCommand(text);
   }
 }
@@ -170,6 +173,20 @@ function remove(task) {
     }
   }
 }
+
+
+// Edit function
+function edit(task) {
+
+  if (task == "" || parseInt(task.split(" ")[0]) > tasks.length)
+    console.log("ERROR!");
+  else if (Number.isInteger(parseInt(task.split(" ")[0]))) {
+    tasks[parseInt(task.split(" ")[0]) - 1] = task.substring(task.split(" ")[0].length).trim();
+  }
+  else
+    tasks[tasks.length - 1] = task;
+}
+
 
 
 // The following line starts the application
