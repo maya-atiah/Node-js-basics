@@ -54,17 +54,19 @@ function onDataReceived(text) {
   else if(text.split(" ")[0].replace("\n","") === "add"){
     add(text.replace("\n","").split(" ").slice(1));
   }
+  else if (text.slice(0, 6) === "remove")
+  remove(text.replace(/\t/g, "").slice(6).trim());
 
-  else if(text==="remove\n"){
-    remove();
+//   else if(text==="remove\n"){
+//     remove();
       
-  }
- else if(text==="remove 1\n"){
-  remove1();
- }
- else if(text==="remove 2\n"){
-  remove2();
- }
+//   }
+//  else if(text==="remove 1\n"){
+//   remove1();
+//  }
+//  else if(text==="remove 2\n"){
+//   remove2();
+//  }
   else{
     unknownCommand(text);
   }
@@ -145,16 +147,28 @@ function add(task) {
 } 
 
 // remove function
-function remove(task){
-  tasks.pop(task);
-} 
 
-function remove1(task){
-  tasks.shift(task);
-}
 
-function remove2(task){
-  tasks.splice(1,1);
+// function remove(task){
+//   tasks.pop(task);
+// } 
+
+// function remove1(task){
+//   tasks.shift(task);
+// }
+
+// function remove2(task){
+//   tasks.splice(1,1);
+// }
+function remove(task) {
+  if (task == "") tasks.pop(task);
+  else {
+    if (!Number.isInteger(parseInt(task))) {
+      console.log("remove 'x'  x is not a NUMBER!!!");
+    } else {
+      tasks.splice(parseInt(task) - 1, 1);
+    }
+  }
 }
 
 
