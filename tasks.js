@@ -47,6 +47,13 @@ function onDataReceived(text) {
   else if (text.slice(0, 5) === "hello") {
     hello(text.replace(/ /g, "").slice(5).trim());
   }
+
+  else if (text === 'list\n') {
+    list();
+  }
+  else if(text.split(" ")[0].replace("\n","") === "add"){
+    add(text.replace("\n","").split(" ").slice(1));
+  }
   else{
     unknownCommand(text);
   }
@@ -131,5 +138,15 @@ function list(){
   for(let i=0; i<tasks.length; i++)
     console.log((i+1)+"- "+tasks[i]);
 }
+
+//Add function 
+function add(task) {
+  if (task != "")
+    tasks.push(task);
+  else {
+    console.log("error");
+  }
+} 
+
 // The following line starts the application
 startApp("Maya Atiah")
