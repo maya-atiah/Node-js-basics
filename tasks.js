@@ -40,6 +40,10 @@ function onDataReceived(text) {
   else if(text === 'hello\n'){
     hello();
   }
+  else if (text === 'help\n') {
+    help();
+
+  }
   else{
     unknownCommand(text);
   }
@@ -78,5 +82,27 @@ function quit(){
   process.exit();
 }
 
+/**
+ * Help function
+ */
+ function help() {
+  const help = ["hello", "quit", "exit"];
+  help.forEach(element => {
+    if (element === "quit") {
+      console.log("- To quit the app : ");
+      console.log(element);
+    }
+    else if (element === "hello") {
+      console.log("- Says hello name! : ");
+      console.log(element + " name");
+    }
+    else if (element === "exit") {
+      console.log("- To exit the app :");
+      console.log(element);
+    }
+
+  
+  });
+}
 // The following line starts the application
 startApp("Maya Atiah")
