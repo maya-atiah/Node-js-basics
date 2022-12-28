@@ -44,6 +44,9 @@ function onDataReceived(text) {
     help();
 
   }
+  else if (text.slice(0, 5) === "hello") {
+    hello(text.replace(/ /g, "").slice(5).trim());
+  }
   else{
     unknownCommand(text);
   }
@@ -71,6 +74,16 @@ function hello(){
   console.log('hello!')
 }
 
+function hello(name) {
+  var newname = "";
+  if (name != "") {
+    newname = " ";
+    newname += name;
+  }
+  console.log("hello" + newname + "!");
+
+
+}
 
 /**
  * Exits the application
