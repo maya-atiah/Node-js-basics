@@ -97,7 +97,7 @@ function quit(){
       console.log(element + " name");
     }
     else if (element === "exit") {
-      console.log("- To exit the app :");
+      console.log("- To exit the app:");
       console.log(element);
     }
 
