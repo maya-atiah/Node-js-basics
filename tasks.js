@@ -117,5 +117,19 @@ function quit(){
   
   });
 }
+
+
+//list
+const tasks = [
+  "Go to the university",
+  "Finish assignments",
+  "Sleep"
+]
+
+//List function
+function list(){
+  for(let i=0; i<tasks.length; i++)
+    console.log((i+1)+"- "+tasks[i]);
+}
 // The following line starts the application
 startApp("Maya Atiah")
