@@ -56,7 +56,6 @@ function onDataReceived(text) {
   }
   else if (text.slice(0, 6) === "remove")
   remove(text.replace(/ /g, "").slice(6).trim());
-
 //   else if(text==="remove\n"){
 //     remove();
       
@@ -69,6 +68,13 @@ function onDataReceived(text) {
 //  }
   else if (text.slice(0, 4) === "edit")  {
     edit(text.replace(/ /g, "").slice(4).trim());
+  }
+  else if(text.slice(0,5)==="check"){
+    check(text.replace(/ /g,"").slice(5).trim());
+
+  }
+  else if (text.slice(0,7) === "uncheck"){
+    uncheck(text.replace(/ /g,"").slice(7).trim());
   }
   else {
     unknownCommand(text);
@@ -207,7 +213,25 @@ function edit(task) {
     tasks[tasks.length - 1].done = false;
 }
 
+//check function
+function check(task){
+  if(task==""){
+    console.log("ERROR!");}
+  else if (Number.isInteger(parseInt(task.split(" ")))){
+   
+    tasks[parseInt(task.split(" ")) - 1].done=true;
+  }
+    
+  }
 
+  //uncheck function 
+  function uncheck(task){
+    if(task=="")
+    console.log("ERROR!");
+    else if (Number.isInteger(parseInt(task.split(" ")))){
+      tasks[parseInt(task.split(" ")) - 1].done=false;
+    }
+  }
 
 // The following line starts the application
 startApp("Maya Atiah")
