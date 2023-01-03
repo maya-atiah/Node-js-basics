@@ -127,23 +127,41 @@ function help() {
 }
 
 
-//list
+//list with done property
 const tasks = [
-  "Go to the university",
-  "Finish assignments",
-  "Sleep"
+  {
+    task: "Go to the university",
+    done: true
+  },
+  {
+    task: "Finish assignments",
+    done: false
+  },
+  {
+    task: "Sleep",
+    done: true
+  }
 ]
 
 //List function
 function list(){
   for(let i=0; i<tasks.length; i++)
-    console.log((i+1)+"- "+tasks[i]);
+    if(tasks[i].done===false){
+      console.log((i+1)+"- "+tasks[i].task+"[ ]")
+    }
+    else{
+      console.log((i+1)+"- "+tasks[i].task+"[✓]")
+    }
+
 }
 
 //Add function 
 function add(task) {
   if (task != "")
-    tasks.push(task);
+    tasks.push({
+      task: task,
+      done:false
+    });
   else {
     console.log("error");
   }
@@ -178,13 +196,15 @@ function remove(task) {
 // Edit function
 function edit(task) {
 
-  if (task == "" || parseInt(task.split(" ")[0]) > tasks.length)
+  if (task == "" || parseInt(task.split(" "))>tasks.length)
     console.log("ERROR!");
-  else if (Number.isInteger(parseInt(task.split(" ")[0]))) {
-    tasks[parseInt(task.split(" ")[0]) - 1] = task.substring(task.split(" ")[0].length).trim();
+  else if (Number.isInteger(parseInt(task.split(" ")))) {
+    tasks[parseInt(task.split(" ")) - 1].task= task.substring(task.split(" ").length).trim();
+    tasks[parseInt(task.split(" ")) - 1].done=false;
   }
   else
-    tasks[tasks.length - 1] = task;
+    tasks[tasks.length - 1].task = task;
+    tasks[tasks.length - 1].done = false;
 }
 
 
